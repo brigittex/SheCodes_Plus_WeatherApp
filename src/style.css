@@ -24,12 +24,17 @@ footer {
   font-size: 40px;
 }
 
+/*
 .current-emoji {
   font-family: var(--bs-body-font-family);
   font-size: 90px;
   text-align: center;
 }
+*/
 
+img {
+  width: 150px;
+}
 .current-temp {
   font-size: 90px;
   font-weight: 700;

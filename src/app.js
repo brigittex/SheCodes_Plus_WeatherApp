@@ -62,6 +62,14 @@ function showCurrentWeather(response) {
   let location = document.querySelector(".location");
   location.innerHTML = response.data.name;
 
+  //updating weather icon
+  let currentIcon = document.querySelector("#current-icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
+
   //updating temperature value
   let currentTemp = document.querySelector("#current-temp-value");
   currentTemp.innerHTML = Math.round(response.data.main.temp);
