@@ -52,25 +52,24 @@
 
           <div class="row location">Ottawa</div>
 
-          <div class="row current-section">
+          <div class="row">
             <div class="col-3">
-              <div class="row current-weekday">Thursday</div>
-              <div class="row current-date">November 25th, 2021</div>
-              <div class="row current-time">9:04pm</div>
+              <div class="row" id="current-weekday">Thursday</div>
+              <div class="row" id="current-date">November 25th, 2021</div>
+              <div class="row" id="current-time">9:04pm</div>
             </div>
 
             <div class="col-3 current-emoji">🌤</div>
 
-            <div class="col-4 current-temp">
-              <span id="current-temp-value">4</span>°<small
-                >°C | <a href="#"> °F</a></small
-              >
+            <div class="col-3 current-temp">
+              <span id="current-temp-value"></span
+              ><small>°C | <a href="#"> °F</a></small>
             </div>
 
-            <div class="col-2 weather-details">
-              <div class="row current-weather-type">Mist</div>
-              <div class="row current-humidity">Humidity: 97%</div>
-              <div class="row current-wind">Wind: 6 km/h</div>
+            <div class="col-3">
+              <div class="row" id="current-weather-type"></div>
+              <div class="row">Humidity: <span id="humidity"></span>%</div>
+              <div class="row">Wind:<span id="wind"></span>km/h</div>
             </div>
 
             <!--closing row for current weather section-->

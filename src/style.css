@@ -38,23 +38,7 @@ footer {
 
 .current-temp small {
   font-size: 20px;
+  font-weight: normal;
+  position: relative;
+  bottom: 50px;
 }
-
-/* hover state properties for all sections */
-.current-section {
-  border-radius: 10px;
-  transition: 120ms ease-in-out;
-}
-.current-section:hover {
-  background: rgb(239, 247, 252);
-  cursor: default;
-}
-
-/* classes with no CSS (yet)
-.current-weekday 
-.current-date 
-.current-time
-.current-weather-type
-.current-humidity
-.current-wind
-*/
