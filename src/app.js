@@ -62,13 +62,44 @@ function showCurrentWeather(response) {
   let location = document.querySelector(".location");
   location.innerHTML = response.data.name;
 
+  //matching weather icon with emoji
+  let icon = response.data.weather[0].icon;
+  let emoji = "🌞;";
+  if (icon === "01d") {
+    emoji = "☀";
+  } else if (icon === "02d") {
+    emoji = "🌑";
+  } else if (icon === "02d") {
+    emoji = "🌤";
+  } else if (
+    (icon === "02n") |
+    (icon === "03d") |
+    (icon === "03n") |
+    (icon === "04d") |
+    (icon === "04n")
+  ) {
+    emoji = "☁";
+  } else if ((icon === "09d") | (icon === "09n") | (icon === "10n")) {
+    emoji = "🌧";
+  } else if (icon === "10d") {
+    emoji = "🌦";
+  } else if ((icon === "11d") | (icon === "11n")) {
+    emoji = "🌩";
+  } else if ((icon === "13d") | (icon === "13n")) {
+    emoji = "❄";
+  } else if ((icon === "50d") | (icon === "50n")) {
+    emoji = "🌫";
+  }
+
+  //updating weather emoji
+  let currentEmoji = document.querySelector("#current-emoji");
+  currentEmoji.innerHTML = emoji;
+
   //updating weather icon
-  let currentIcon = document.querySelector("#current-icon");
-  currentIcon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  currentIcon.setAttribute("alt", response.data.weather[0].description);
+
+  //let currentIcon = document.querySelector("#current-icon");
+  //currentIcon.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  //currentIcon.setAttribute("alt", response.data.weather[0].description);
 
   //updating temperature value
   let currentTemp = document.querySelector("#current-temp-value");
