@@ -11,3 +11,8 @@ footer {
   display: block;
   margin: 10 auto;
 }
+
+.card {
+  margin: 20px auto;
+  max-width: 1000px;
+}
