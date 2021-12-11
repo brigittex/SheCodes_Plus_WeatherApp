@@ -20,7 +20,13 @@
       crossorigin="anonymous"
     ></script>
 
-    <!--importing Google fonts -- TBD -->
+    <!--importing Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
 
     <!--importing axios to API use-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -42,31 +48,37 @@
       <div class="card">
         <!--creating card-body for spacing inside card-->
         <div class="card-body">
-          <h1>Weather App</h1>
           <!--row for current weather section-->
-          <div class="row">
-            <div class="col-3">
-              <div class="row">Ottawa</div>
-              <div class="row">Thursday</div>
-              <div class="row">November 25th, 2021</div>
-              <div class="row">9:04pm</div>
 
-              <hr />
-              <div class="row">Mist</div>
-              <div class="row">Humidity: 97%</div>
-              <div class="row">Wind: 6 km/h</div>
+          <div class="row location">Ottawa</div>
+
+          <div class="row current-section">
+            <div class="col-3">
+              <div class="row current-weekday">Thursday</div>
+              <div class="row current-date">November 25th, 2021</div>
+              <div class="row current-time">9:04pm</div>
             </div>
 
-            <div class="col-3">🌤</div>
+            <div class="col-3 current-emoji">🌤</div>
 
-            <div class="col-3">4</div>
-            <div class="col-3">°C | °F</div>
+            <div class="col-4 current-temp">
+              <span id="current-temp-value">4</span>°<small
+                >°C | <a href="#"> °F</a></small
+              >
+            </div>
+
+            <div class="col-2 weather-details">
+              <div class="row current-weather-type">Mist</div>
+              <div class="row current-humidity">Humidity: 97%</div>
+              <div class="row current-wind">Wind: 6 km/h</div>
+            </div>
 
             <!--closing row for current weather section-->
           </div>
 
           <!--closing card-body-->
         </div>
+
         <!--closing card-->
       </div>
 

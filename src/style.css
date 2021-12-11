@@ -1,18 +1,60 @@
-h1 {
-  display: block;
-  text-align: center;
-  color: rgb(4, 101, 165);
-}
-
 footer {
   text-align: center;
   font-size: 15px;
   color: rgb(152, 152, 152);
   display: block;
   margin: 10 auto;
+  font-family: "Roboto Mono", monospace;
 }
 
+/* card setup on page, font assignment or text */
 .card {
   margin: 20px auto;
-  max-width: 1000px;
+  max-width: 800px;
+  border-radius: 10px;
+  font-family: "DM Sans", sans-serif;
 }
+
+.card-body {
+  padding: 30px;
+}
+
+.location {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.current-emoji {
+  font-family: var(--bs-body-font-family);
+  font-size: 90px;
+  text-align: center;
+}
+
+.current-temp {
+  font-size: 90px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.current-temp small {
+  font-size: 20px;
+}
+
+/* hover state properties for all sections */
+.current-section {
+  border-radius: 10px;
+  transition: 120ms ease-in-out;
+}
+.current-section:hover {
+  background: rgb(239, 247, 252);
+  cursor: default;
+}
+
+/* classes with no CSS (yet)
+.current-weekday 
+.current-date 
+.current-time
+.current-weather-type
+.current-humidity
+.current-wind
+*/
