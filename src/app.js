@@ -107,8 +107,9 @@ function updateCurrentWeather(response) {
   //currentIcon.setAttribute("alt", response.data.weather[0].description);
 
   //updating temperature value
+  celsiusTemperature = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#current-temp-value");
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = celsiusTemperature;
 
   //updating weather type
   let weatherType = document.querySelector("#current-weather-type");
@@ -163,11 +164,31 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(handleCurrentLocation);
 }
 
+function showFahrenheit(event) {
+  let fahrenheitTemperature = celsiusTemperature * (9 / 5) + 32;
+  let tempElement = document.querySelector("#current-temp-value");
+  tempElement.innerHTML = fahrenheitTemperature;
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temp-value");
+  tempElement.innerHTML = celsiusTemperature;
+}
+
 //non-functions-------------------------------------------
 let locationForm = document.querySelector("#input-form");
 locationForm.addEventListener("submit", handleInput);
 
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("submit", getCurrentLocation);
+
+let celsiusTemperature = null;
+
+let clickFahrenheit = document.querySelector("#toFahrenheit");
+clickFahrenheit.addEventListener("click", showFahrenheit);
+
+let clickCelsius = document.querySelector("#toCelsius");
+clickCelsius.addEventListener("click", showCelsius);
 
 search("Ottawa");
