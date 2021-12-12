@@ -7,7 +7,7 @@ footer {
   font-family: "Roboto Mono", monospace;
 }
 
-/* card setup on page, font assignment for text */
+/* setup on page, font assignment for all text except footer */
 .weather-app-wrapper {
   margin: 20px auto;
   max-width: 900px;
@@ -31,9 +31,12 @@ footer {
   text-align: center;
 }
 
+/* not in use
 img {
   width: 150px;
 }
+*/
+
 .current-temp {
   font-size: 90px;
   font-weight: 700;

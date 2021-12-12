@@ -101,7 +101,6 @@ function updateCurrentWeather(response) {
   currentEmoji.innerHTML = emoji;
 
   //updating weather icon
-
   //let currentIcon = document.querySelector("#current-icon");
   //currentIcon.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   //currentIcon.setAttribute("alt", response.data.weather[0].description);
@@ -143,6 +142,7 @@ function handleInput(event) {
   search(newLocation.value);
 }
 
+//function find the weather of a given lat and lon
 function searchCurrent(lat, lon) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "a825d12564855984e0e5673562cb2c52";
@@ -164,16 +164,28 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(handleCurrentLocation);
 }
 
+//converting temperature to Fahrenheit
 function showFahrenheit(event) {
-  let fahrenheitTemperature = celsiusTemperature * (9 / 5) + 32;
+  let fahrenheitTemperature = Math.round(celsiusTemperature * (9 / 5) + 32);
   let tempElement = document.querySelector("#current-temp-value");
   tempElement.innerHTML = fahrenheitTemperature;
+
+  clickFahrenheit.classList.remove("btn-outline-primary");
+  clickFahrenheit.classList.add("btn-primary");
+  clickCelsius.classList.remove("btn-primary");
+  clickCelsius.classList.add("btn-outline-primary");
 }
 
+//converting temperature to Celsius
 function showCelsius(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#current-temp-value");
   tempElement.innerHTML = celsiusTemperature;
+
+  clickFahrenheit.classList.remove("btn-primary");
+  clickFahrenheit.classList.add("btn-outline-primary");
+  clickCelsius.classList.remove("btn-outline-primary");
+  clickCelsius.classList.add("btn-primary");
 }
 
 //non-functions-------------------------------------------
