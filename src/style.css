@@ -10,7 +10,7 @@ footer {
 /* card setup on page, font assignment for text */
 .weather-app-wrapper {
   margin: 20px auto;
-  max-width: 800px;
+  max-width: 900px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 10px;
   font-family: "DM Sans", sans-serif;

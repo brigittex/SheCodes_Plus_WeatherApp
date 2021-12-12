@@ -48,8 +48,45 @@
       <div class="weather-app-wrapper">
         <!--creating card-body for spacing inside card-->
         <div class="weather-app">
-          <!--row for current weather section-->
+          <!--location search row-->
+          <form id="input-form">
+            <div class="row">
+              <div class="col-9">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Location"
+                    id="location-input"
+                    autofocus
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
 
+              <div class="col-3">
+                <button type="submit" class="btn btn-primary w-100 float-end">
+                  🔎 Search
+                </button>
+              </div>
+              <!--closing location search row-->
+            </div>
+          </form>
+
+          <!--current location button row -->
+          <form id="current-location">
+            <div class="row">
+              <div class="col-9"></div>
+              <div class="col-3">
+                <button type="submit" class="btn btn-success w-100 float-end">
+                  📍 Current Location
+                </button>
+              </div>
+              <!--closing current location row-->
+            </div>
+          </form>
+
+          <!--row for current weather section-->
           <div class="row location"></div>
 
           <div class="row">

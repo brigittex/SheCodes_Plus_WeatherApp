@@ -1,3 +1,4 @@
+//function to update the time and date based on the location
 function updateTimeDate(response) {
   let days = [
     "Sunday",
@@ -55,19 +56,12 @@ function updateTimeDate(response) {
   time.innerHTML = `${hour}:${minute}${half}`;
 }
 
-function showCurrentWeather(response) {
-  console.log(response.data);
-
-  //updating location name
-  let location = document.querySelector(".location");
-  location.innerHTML = response.data.name;
-
-  //matching weather icon with emoji
-  let icon = response.data.weather[0].icon;
-  let emoji = "🌞;";
+//function to match weather icon with emoji
+function updateEmoji(icon) {
+  let emoji = "🌞";
   if (icon === "01d") {
     emoji = "☀";
-  } else if (icon === "02d") {
+  } else if (icon === "01n") {
     emoji = "🌑";
   } else if (icon === "02d") {
     emoji = "🌤";
@@ -90,8 +84,19 @@ function showCurrentWeather(response) {
   } else if ((icon === "50d") | (icon === "50n")) {
     emoji = "🌫";
   }
+  return emoji;
+}
+
+//function to update the current weather section based on the location's weather
+function updateCurrentWeather(response) {
+  //console.log(response.data);
+
+  //updating location name
+  let location = document.querySelector(".location");
+  location.innerHTML = response.data.name;
 
   //updating weather emoji
+  let emoji = updateEmoji(response.data.weather[0].icon);
   let currentEmoji = document.querySelector("#current-emoji");
   currentEmoji.innerHTML = emoji;
 
@@ -121,11 +126,48 @@ function showCurrentWeather(response) {
   updateTimeDate(response.data.dt * 1000);
 }
 
-let city = "Ottawa";
+//function to find the weather of a given location
+function search(newlocation) {
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiKey = "a825d12564855984e0e5673562cb2c52";
+  let units = "metric";
+  let apiUrl = `${apiEndpoint}appid=${apiKey}&units=${units}&q=${newlocation}`;
+  axios.get(apiUrl).then(updateCurrentWeather);
+}
 
-let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
-let apiKey = "a825d12564855984e0e5673562cb2c52";
-let units = "metric";
+//function to handle a submitted location on the form
+function handleInput(event) {
+  event.preventDefault();
+  let newLocation = document.querySelector("#location-input");
+  search(newLocation.value);
+}
 
-let apiUrl = `${apiEndpoint}appid=${apiKey}&units=${units}&q=${city}`;
-axios.get(apiUrl).then(showCurrentWeather);
+function searchCurrent(lat, lon) {
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiKey = "a825d12564855984e0e5673562cb2c52";
+  let units = "metric";
+  let apiUrl = `${apiEndpoint}appid=${apiKey}&units=${units}&lat=${lat}&lon=${lon}`;
+  axios.get(apiUrl).then(updateCurrentWeather);
+}
+
+//getting the lat and lon of current location
+function handleCurrentLocation(location) {
+  let lat = location.coords.latitude;
+  let lon = location.coords.longitude;
+  searchCurrent(lat, lon);
+}
+
+//getting the current location of the user
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(handleCurrentLocation);
+}
+
+//non-functions-------------------------------------------
+let locationForm = document.querySelector("#input-form");
+locationForm.addEventListener("submit", handleInput);
+
+let currentButton = document.querySelector("#current-location");
+currentButton.addEventListener("submit", getCurrentLocation);
+
+search("Ottawa");
