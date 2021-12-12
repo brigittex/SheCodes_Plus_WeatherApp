@@ -122,6 +122,12 @@ function updateCurrentWeather(response) {
   let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(response.data.wind.speed);
 
+  //resetting the radio button selection to C
+  clickFahrenheit.classList.remove("btn-primary");
+  clickFahrenheit.classList.add("btn-outline-primary");
+  clickCelsius.classList.remove("btn-outline-primary");
+  clickCelsius.classList.add("btn-primary");
+
   //calling function to update time and date
   updateTimeDate(response.data.dt * 1000);
 }
