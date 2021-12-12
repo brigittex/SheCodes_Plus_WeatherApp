@@ -56,7 +56,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Enter Location"
+                    placeholder="Enter location"
                     id="location-input"
                     autofocus
                     autocomplete="off"
@@ -90,10 +90,14 @@
           <div class="row location"></div>
 
           <div class="row">
-            <div class="col-3">
-              <div class="row" id="current-weekday"></div>
-              <div class="row" id="current-date"></div>
-              <div class="row" id="current-time"></div>
+            <div class="col-4">
+              <div id="current-weekday"></div>
+              <div id="current-date"></div>
+              <div id="current-time"></div>
+              <hr />
+              <div id="current-weather-type"></div>
+              <div>Humidity: <span id="humidity"></span>%</div>
+              <div>Wind: <span id="wind"></span>km/h</div>
             </div>
 
             <div class="col-3 current-emoji" id="current-emoji"></div>
@@ -104,14 +108,17 @@
             -->
 
             <div class="col-3 current-temp">
-              <span id="current-temp-value"></span
-              ><small>°C | <a href="#"> °F</a></small>
+              <span id="current-temp-value"></span>
+              <small>°</small>
             </div>
-
-            <div class="col-3">
-              <div class="row" id="current-weather-type"></div>
-              <div class="row">Humidity: <span id="humidity"></span>%</div>
-              <div class="row">Wind: <span id="wind"></span>km/h</div>
+            <!--Celcius to Fahrenheit toggle button-->
+            <div class="col-2">
+              <div class="btn-group float-end">
+                <a href="#" class="btn btn-primary active" aria-current="page"
+                  >°C</a
+                >
+                <a href="#" class="btn btn-outline-primary">°F</a>
+              </div>
             </div>
 
             <!--closing row for current weather section-->

@@ -41,8 +41,13 @@ img {
 }
 
 .current-temp small {
-  font-size: 20px;
+  font-size: 50px;
   font-weight: normal;
   position: relative;
-  bottom: 50px;
+  bottom: 30px;
+}
+
+.btn-group {
+  position: relative;
+  bottom: 45px;
 }
