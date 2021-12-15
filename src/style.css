@@ -1,3 +1,23 @@
+body {
+  background: linear-gradient(
+    90deg,
+    rgb(223, 234, 247) 11.2%,
+    rgb(244, 248, 252) 91.1%
+  );
+}
+
+/* setup on page, font assignment for all text except footer */
+.weather-app-wrapper {
+  margin: 20px auto;
+  max-width: 900px;
+  background-color: white;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+}
+
 footer {
   text-align: center;
   font-size: 15px;
@@ -6,17 +26,6 @@ footer {
   margin: 10 auto;
   font-family: "Roboto Mono", monospace;
 }
-
-/* setup on page, font assignment for all text except footer */
-.weather-app-wrapper {
-  margin: 20px auto;
-  max-width: 900px;
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 10px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 16px;
-}
-
 .weather-app {
   padding: 30px;
 }
