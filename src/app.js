@@ -130,10 +130,23 @@ function updateCurrentWeather(response) {
 
   //calling function to update time and date
   updateTimeDate(response.data.dt * 1000);
+
+  //calling function to fetch forecast data
+  getForecast(response.data.coord);
+}
+
+//function to obtain the forecast from an API call
+function getForecast(coordinates) {
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/onecall?";
+  let apiKey = "a825d12564855984e0e5673562cb2c52";
+  let units = "metric";
+  let apiUrl = `${apiEndpoint}appid=${apiKey}&units=${units}&lat=${coordinates.lat}&lon=${coordinates.lon}`;
+  axios.get(apiUrl).then(updateForecast);
 }
 
 //function to update forecast section
-function updateForecast() {
+function updateForecast(response) {
+  //console.log(response);
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let forecastHTML = `<!--opening forecast row--><div class="row">`;
@@ -240,6 +253,3 @@ let clickCelsius = document.querySelector("#toCelsius");
 clickCelsius.addEventListener("click", showCelsius);
 
 search("Ottawa");
-
-//must determine better location to call this function
-updateForecast();
