@@ -89,7 +89,7 @@ function updateEmoji(icon) {
 
 //function to update the current weather section based on the location's weather
 function updateCurrentWeather(response) {
-  //console.log(response.data);
+  console.log(response.data);
 
   //updating location name
   let location = document.querySelector(".location");
@@ -113,6 +113,10 @@ function updateCurrentWeather(response) {
   //updating weather type
   let weatherType = document.querySelector("#current-weather-type");
   weatherType.innerHTML = response.data.weather[0].main;
+
+  //updating feels like
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = Math.round(response.data.main.feels_like);
 
   //updating humidity
   let humidity = document.querySelector("#humidity");
