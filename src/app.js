@@ -118,9 +118,9 @@ function updateCurrentWeather(response) {
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = response.data.main.humidity;
 
-  //updating wind
+  //updating wind, converting from meters/second to km/hr
   let wind = document.querySelector("#wind");
-  wind.innerHTML = Math.round(response.data.wind.speed);
+  wind.innerHTML = Math.round(response.data.wind.speed * 3.6);
 
   //resetting the radio button selection to C
   clickFahrenheit.classList.remove("btn-primary");
