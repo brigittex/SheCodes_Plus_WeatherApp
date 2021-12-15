@@ -132,6 +132,36 @@ function updateCurrentWeather(response) {
   updateTimeDate(response.data.dt * 1000);
 }
 
+//function to update forecast section
+function updateForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let forecastHTML = `<!--opening forecast row--><div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<!--opening forecast column for one day-->
+              <div class="col forecast-column-day">
+                <div class="forecast-day">${day}</div>
+                <div class="forecast-emoji">☀</div>
+                <div>
+                  <span class="forecast-min">-4°</span>
+                  <span class="forecast-max">0°</span>
+                </div>
+                <!--closing day column-->
+              </div>`;
+  });
+
+  forecastHTML =
+    forecastHTML +
+    ` <!--closing forecast row-->
+            </div>`;
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //function to find the weather of a given location
 function search(newlocation) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
@@ -210,3 +240,6 @@ let clickCelsius = document.querySelector("#toCelsius");
 clickCelsius.addEventListener("click", showCelsius);
 
 search("Ottawa");
+
+//must determine better location to call this function
+updateForecast();
