@@ -51,11 +51,6 @@ img {
   bottom: 30px;
 }
 
-.btn-group {
-  position: relative;
-  bottom: 45px;
-}
-
 .forecast-emoji {
   font-family: var(--bs-body-font-family);
   font-size: 50px;

@@ -144,26 +144,43 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(updateForecast);
 }
 
+//function to return short weekday
+function getShortDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
+
 //function to update forecast section
 function updateForecast(response) {
   //console.log(response);
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let forecast = response.data.daily;
 
   let forecastHTML = `<!--opening forecast row--><div class="row">`;
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<!--opening forecast column for one day-->
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 8 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `<!--opening forecast column for one day-->
               <div class="col forecast-column-day">
-                <div class="forecast-day">${day}</div>
-                <div class="forecast-emoji">☀</div>
+                <div class="forecast-day">${getShortDay(forecastDay.dt)}</div>
+                <div class="forecast-emoji">${updateEmoji(
+                  forecastDay.weather[0].icon
+                )}</div>
                 <div>
-                  <span class="forecast-min">-4°</span>
-                  <span class="forecast-max">0°</span>
+                  <span class="forecast-min">${Math.round(
+                    forecastDay.temp.min
+                  )}°</span>
+                  <span class="forecast-max">${Math.round(
+                    forecastDay.temp.max
+                  )}°</span>
                 </div>
                 <!--closing day column-->
               </div>`;
+    }
   });
 
   forecastHTML =
