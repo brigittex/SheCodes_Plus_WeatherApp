@@ -6,6 +6,10 @@ body {
   );
 }
 
+.weather-app {
+  padding: 30px;
+}
+
 /* setup on page, font assignment for all text except footer */
 .weather-app-wrapper {
   margin: 20px auto;
@@ -16,6 +20,7 @@ body {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
   font-family: "DM Sans", sans-serif;
   font-size: 16px;
+  color: rgb(77, 77, 77);
 }
 
 footer {
@@ -25,9 +30,6 @@ footer {
   display: block;
   margin: 10 auto;
   font-family: "Roboto Mono", monospace;
-}
-.weather-app {
-  padding: 30px;
 }
 
 .location {
@@ -60,6 +62,18 @@ img {
   bottom: 30px;
 }
 
+.forecast-column-day {
+  border-radius: 10px;
+  transition: 120ms ease-in-out;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.forecast-column-day:hover {
+  background: rgb(239, 247, 252);
+  cursor: default;
+}
+
 .forecast-emoji {
   font-family: var(--bs-body-font-family);
   font-size: 50px;
@@ -71,17 +85,5 @@ img {
 }
 
 .forecast-min {
-  opacity: 0.5;
-}
-
-.forecast-column-day {
-  border-radius: 10px;
-  transition: 120ms ease-in-out;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.forecast-column-day:hover {
-  background: rgb(239, 247, 252);
-  cursor: default;
+  opacity: 0.6;
 }

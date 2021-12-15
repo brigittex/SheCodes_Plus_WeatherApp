@@ -127,10 +127,10 @@ function updateCurrentWeather(response) {
   wind.innerHTML = Math.round(response.data.wind.speed * 3.6);
 
   //resetting the radio button selection to C
-  clickFahrenheit.classList.remove("btn-primary");
-  clickFahrenheit.classList.add("btn-outline-primary");
-  clickCelsius.classList.remove("btn-outline-primary");
-  clickCelsius.classList.add("btn-primary");
+  clickFahrenheit.classList.remove("btn-secondary");
+  clickFahrenheit.classList.add("btn-outline-secondary");
+  clickCelsius.classList.remove("btn-outline-secondary");
+  clickCelsius.classList.add("btn-secondary");
 
   //calling function to update time and date
   updateTimeDate(response.data.dt * 1000);
@@ -243,10 +243,10 @@ function showFahrenheit(event) {
   let unitDisplay = document.querySelector("#current-unit");
   unitDisplay.innerHTML = "°F";
 
-  clickFahrenheit.classList.remove("btn-outline-primary");
-  clickFahrenheit.classList.add("btn-primary");
-  clickCelsius.classList.remove("btn-primary");
-  clickCelsius.classList.add("btn-outline-primary");
+  clickFahrenheit.classList.remove("btn-outline-secondary");
+  clickFahrenheit.classList.add("btn-secondary");
+  clickCelsius.classList.remove("btn-secondary");
+  clickCelsius.classList.add("btn-outline-secondary");
 }
 
 //converting temperature to Celsius
@@ -258,10 +258,10 @@ function showCelsius(event) {
   let unitDisplay = document.querySelector("#current-unit");
   unitDisplay.innerHTML = "°C";
 
-  clickFahrenheit.classList.remove("btn-primary");
-  clickFahrenheit.classList.add("btn-outline-primary");
-  clickCelsius.classList.remove("btn-outline-primary");
-  clickCelsius.classList.add("btn-primary");
+  clickFahrenheit.classList.remove("btn-secondary");
+  clickFahrenheit.classList.add("btn-outline-secondary");
+  clickCelsius.classList.remove("btn-outline-secondary");
+  clickCelsius.classList.add("btn-secondary");
 }
 
 //non-functions-------------------------------------------
