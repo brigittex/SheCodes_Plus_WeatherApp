@@ -89,7 +89,7 @@ function updateEmoji(icon) {
 
 //function to update the current weather section based on the location's weather
 function updateCurrentWeather(response) {
-  console.log(response.data);
+  //console.log(response.data);
 
   //updating location name
   let location = document.querySelector(".location");
@@ -240,6 +240,9 @@ function showFahrenheit(event) {
   let tempElement = document.querySelector("#current-temp-value");
   tempElement.innerHTML = fahrenheitTemperature;
 
+  let unitDisplay = document.querySelector("#current-unit");
+  unitDisplay.innerHTML = "°F";
+
   clickFahrenheit.classList.remove("btn-outline-primary");
   clickFahrenheit.classList.add("btn-primary");
   clickCelsius.classList.remove("btn-primary");
@@ -251,6 +254,9 @@ function showCelsius(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#current-temp-value");
   tempElement.innerHTML = celsiusTemperature;
+
+  let unitDisplay = document.querySelector("#current-unit");
+  unitDisplay.innerHTML = "°C";
 
   clickFahrenheit.classList.remove("btn-primary");
   clickFahrenheit.classList.add("btn-outline-primary");
