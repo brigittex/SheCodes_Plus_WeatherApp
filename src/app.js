@@ -56,37 +56,6 @@ function updateTimeDate(response) {
   time.innerHTML = `${hour}:${minute}${half}`;
 }
 
-//function to match weather icon with emoji
-function updateEmoji(icon) {
-  let emoji = "🌞";
-  if (icon === "01d") {
-    emoji = "☀";
-  } else if (icon === "01n") {
-    emoji = "🌑";
-  } else if (icon === "02d") {
-    emoji = "🌤";
-  } else if (
-    (icon === "02n") |
-    (icon === "03d") |
-    (icon === "03n") |
-    (icon === "04d") |
-    (icon === "04n")
-  ) {
-    emoji = "☁";
-  } else if ((icon === "09d") | (icon === "09n") | (icon === "10n")) {
-    emoji = "🌧";
-  } else if (icon === "10d") {
-    emoji = "🌦";
-  } else if ((icon === "11d") | (icon === "11n")) {
-    emoji = "🌩";
-  } else if ((icon === "13d") | (icon === "13n")) {
-    emoji = "❄";
-  } else if ((icon === "50d") | (icon === "50n")) {
-    emoji = "🌫";
-  }
-  return emoji;
-}
-
 //function to update the current weather section based on the location's weather
 function updateCurrentWeather(response) {
   //console.log(response.data);
@@ -94,11 +63,6 @@ function updateCurrentWeather(response) {
   //updating location name
   let location = document.querySelector(".location");
   location.innerHTML = response.data.name;
-
-  //updating weather emoji
-  // let emoji = updateEmoji(response.data.weather[0].icon);
-  //let currentEmoji = document.querySelector("#current-emoji");
-  //currentEmoji.innerHTML = emoji;
 
   //updating weather icon
   let currentIcon = document.querySelector("#current-icon");
@@ -161,8 +125,6 @@ function getShortDay(timestamp) {
 
 //function to update forecast section
 function updateForecast(response) {
-  //console.log(response);
-
   let forecast = response.data.daily;
 
   let forecastHTML = `<!--opening forecast row--><div class="row">`;
