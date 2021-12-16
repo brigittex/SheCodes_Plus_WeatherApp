@@ -96,14 +96,17 @@ function updateCurrentWeather(response) {
   location.innerHTML = response.data.name;
 
   //updating weather emoji
-  let emoji = updateEmoji(response.data.weather[0].icon);
-  let currentEmoji = document.querySelector("#current-emoji");
-  currentEmoji.innerHTML = emoji;
+  // let emoji = updateEmoji(response.data.weather[0].icon);
+  //let currentEmoji = document.querySelector("#current-emoji");
+  //currentEmoji.innerHTML = emoji;
 
   //updating weather icon
-  //let currentIcon = document.querySelector("#current-icon");
-  //currentIcon.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-  //currentIcon.setAttribute("alt", response.data.weather[0].description);
+  let currentIcon = document.querySelector("#current-icon");
+  currentIcon.setAttribute(
+    "src",
+    `src/icons/${response.data.weather[0].icon}.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 
   //updating temperature value
   celsiusTemperature = Math.round(response.data.main.temp);
@@ -171,9 +174,13 @@ function updateForecast(response) {
         `<!--opening forecast column for one day-->
               <div class="col forecast-column-day">
                 <div class="forecast-day">${getShortDay(forecastDay.dt)}</div>
-                <div class="forecast-emoji">${updateEmoji(
-                  forecastDay.weather[0].icon
-                )}</div>
+                <div>
+                  <img class="forecast-icon" src="src/icons/${
+                    forecastDay.weather[0].icon
+                  }.png" alt="${
+          forecastDay.weather[0].description
+        }" id="forecast-icon"/>
+                </div>
                 <div>
                   <span class="forecast-min">${Math.round(
                     forecastDay.temp.min
