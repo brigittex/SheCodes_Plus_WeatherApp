@@ -106,23 +106,6 @@ function updateCurrentWeather(response) {
   getForecast(response.data.coord);
 }
 
-//function to obtain the forecast from an API call
-function getForecast(coordinates) {
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/onecall?";
-  let apiKey = "a825d12564855984e0e5673562cb2c52";
-  let units = "metric";
-  let apiUrl = `${apiEndpoint}appid=${apiKey}&units=${units}&lat=${coordinates.lat}&lon=${coordinates.lon}`;
-  axios.get(apiUrl).then(updateForecast);
-}
-
-//function to return short weekday
-function getShortDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[date.getDay()];
-  return day;
-}
-
 //function to update forecast section
 function updateForecast(response) {
   let forecast = response.data.daily;
@@ -146,10 +129,10 @@ function updateForecast(response) {
                 <div>
                   <span class="forecast-min">${Math.round(
                     forecastDay.temp.min
-                  )}°</span>
+                  )}°C</span>
                   <span class="forecast-max">${Math.round(
                     forecastDay.temp.max
-                  )}°</span>
+                  )}°C</span>
                 </div>
                 <!--closing day column-->
               </div>`;
@@ -163,6 +146,23 @@ function updateForecast(response) {
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHTML;
+}
+
+//function to obtain the forecast from an API call
+function getForecast(coordinates) {
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/onecall?";
+  let apiKey = "a825d12564855984e0e5673562cb2c52";
+  let units = "metric";
+  let apiUrl = `${apiEndpoint}appid=${apiKey}&units=${units}&lat=${coordinates.lat}&lon=${coordinates.lon}`;
+  axios.get(apiUrl).then(updateForecast);
+}
+
+//function to return short weekday
+function getShortDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
 }
 
 //function to find the weather of a given location
